@@ -1,27 +1,11 @@
-<table border="0" cellspacing="5" cellpadding="5">
-        <tbody>
-        <tr>
-            <td>Minimum amount:</td>
-            <td><input type="text" id="min" name="min"></td>
-        </tr>
-        <tr>
-            <td>Maximum amount:</td>
-            <td><input type="text" id="max" name="max"></td>
-        </tr>
-    </tbody>
-</table>
 <table id="example" class="display" cellspacing="0" width="100%">
 	<thead>
 		<tr>
 			<th>Location</th>
-			<th>Fiscal Year</th>
-			<th>Type</th>
-			<th width = "40%">Organization</th>
-			<!--<th>Project</th>-->
 			<th>Amount</th>
+			<th width = "40%">Organization</th>
+			<th>Fiscal Year</th>
 			<th>Location</th>
-			<th>Strategic Priority & Results</th>
-			<th>Native/Total Served</th>
 		</tr>
 	</thead>
 	<!-- <tfoot>
@@ -41,22 +25,14 @@
 	</tfoot> -->
 	
 	<tbody>
-		<% @grants.each do |grant| %>
+		<% @grantData.each do |grant| %>
 		
 		<tr>
 			<td></td>
-			<td><%= grant.fiscal_year %></td>
-			<td><%= grant.grant_type %></td>
-			<td width = "40%">
-				<div class="tooltip">
-					<%= grant.organization %>
-					<span class="tooltiptext"><%= grant.project %><br/>Grant <%= grant.humanStatus %></span>
-				</div>
-			</td>
 			<td><%= number_to_currency(grant.amount) %></td>
+			<td width = "40%"><%= grant.organization %></td>
+			<td><%= grant.fiscal_year %></td>
 			<td><%= grant.location %></td>
-			<td><%= grant.concatStrategic %></td>
-			<td><%= grant.totalCheck %></td>
 		</tr>
 		
 	<% end %>	
@@ -64,7 +40,7 @@
 </table>
 
 <script>
-/* Custom filtering function which will search data in column four between two values */
+/* Custom filtering function which will search data in column four between two values 
 $.fn.dataTable.ext.search.push(
     function( settings, data, dataIndex ) {
         var min = parseInt( $('#min').val(), 10 );
@@ -81,14 +57,16 @@ $.fn.dataTable.ext.search.push(
         return false;
     }
 );  
+*/
                  
 $(document).ready(function() {
     var table = $('#example').DataTable({
         "columnDefs": [
-            { "visible": false, "targets": 5 }
+            { "visible": false, "targets": 4 }
         ],
-        "order": [[ 5, 'asc' ]],
-        "displayLength": 10,
+        "order": [[ 4, 'asc' ]],
+        "displayLength": 1000,
+        "lengthChange": false,
         "drawCallback": function ( settings ) {
             var api = this.api();
             var rows = api.rows( {page:'current'} ).nodes();
@@ -97,18 +75,17 @@ $(document).ready(function() {
  
             var groupadmin = []; 
  
-            api.column(5, {page:'current'} ).data().each( function ( group, i ) {
+            api.column(4, {page:'current'} ).data().each( function ( group, i ) {
 
                 if ( last !== group ) {
   
                     $(rows).eq( i ).before(
-                        '<tr class="group" id="'+i+'"><td colspan="9">'+group+'</td></tr>'
+                        '<tr class="group" id="'+i+'"><td colspan="4">'+group+'</td></tr>'
                     );
                     groupadmin.push(i);
                     last = group;
                 }
             } );
-            
             for( var k=0; k < groupadmin.length; k++){
 				  // Code added for adding class to sibling elements as "group_<id>"  
                   $("#"+groupadmin[k]).nextUntil("#"+groupadmin[k+1]).addClass(' group_'+groupadmin[k]); 
@@ -120,12 +97,8 @@ $(document).ready(function() {
                  
             }
         }
-    } );
-    
-    // Event listener to the two range filtering inputs to redraw on input
-    $('#min, #max').keyup( function() {
-        table.draw();
-    } );
+    } );  
+
 } );
 
 </script>

@@ -30,6 +30,7 @@ class GrantsController < ApplicationController
   def index
 	preferredY = "amount"
     @grants = Grant.all
+    @grantData = @grants.order("fiscal_year DESC")
     @grant_count = @grants.count
 	@award_amount = @grants.pluck(:amount).sum
 	@served = @grants.pluck("sum(nh_served)", "sum(total_served)")

@@ -29,14 +29,21 @@
 
 <% if @grants.present? %>
 
-	<h2>Charts</h2>	
-	<!-- load drill-down chart -->
-	<%= render 'drillDownChart' %>
-	<br/><br/>
-	<!-- load stacked chart -->
-	<%= render 'stackedChart' %>
+	<div id="chart-area"> 
+		<h2>Charts</h2>	
+		<!-- load drill-down chart -->
+		<div id="drill-down-chart">
+			<%= render 'drillDownChart' %>
+		</div>
+		
+		<!-- load stacked chart -->
+		<div id="stacked-chart">
+			<%= render 'stackedChart' %>
+		</div>
+		
+	</div>
 	
-	<h2>DataTable Example</h2>
+	<h2>Grant Table Data</h2>
 	<!-- load data table -->
 	<%= render 'dataTable' %>	
 

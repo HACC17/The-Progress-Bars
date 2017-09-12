@@ -1,3 +1,114 @@
+/* line 4, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup {
+  width: 100%;
+}
+/* line 6, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .card {
+  height: 150px;
+  width: 215px;
+  margin: 0 15px 15px 0;
+  float: left;
+  padding: 0 0 0 10px;
+  color: #fff;
+}
+/* line 14, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .purple {
+  background-color: purple;
+}
+/* line 15, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .red {
+  background-color: red;
+}
+/* line 16, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .blue {
+  background-color: blue;
+}
+/* line 17, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .orange {
+  background-color: orange;
+}
+/* line 18, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .green {
+  background-color: green;
+}
+
+/* line 21, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#chart-area {
+  clear: both;
+}
+
+/* line 25, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#drill-down-chart, #stackedChart {
+  padding-bottom: 10px;
+}
+#pdf{
+	margin: 0 auto;
+	font-family: arial;
+	font-size: 12px;
+	overflow-x: hidden;
+}
+#result {
+    text-align: right;
+    color: gray;
+    min-height: 2em;
+}
+#table-sparkline {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+th {
+    text-align: left;
+}
+td, th {
+    padding: 5px;
+}
+
+.highcharts-tooltip>span {
+    background: white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #888;
+    padding: 8px;
+}
+/* line 1, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 5, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 11, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 18, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 28, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 34, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+label {
+  display: block;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,8 +121,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
 
 /**
@@ -21,6 +132,7 @@
  * @copyright 2015 Google, Inc.
  * @link https://github.com/google/material-design-lite
  */
+
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 html {
