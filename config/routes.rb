@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 	root :to => 'grants#index'
   	resources :grants, :only => [:index] do
 		collection { post :import }
-		collection { delete :kill }
+		#collection { delete :kill }
 	end
 	
 	#redirect to root for unknown

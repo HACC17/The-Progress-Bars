@@ -73,7 +73,7 @@ table select{
 	}
 }
 
-#drill-down, #line-chart, #stacked-grouped-bar-chart, #stacked{margin:0 auto;}
+#drill-down, #line-chart, #stacked-grouped-bar-chart, #stacked{margin:0 auto; height:400px;}
 #drill-down-chart, #stacked-chart, #line-stack-chart, #faq-area{
 	background: #fff;
 	border-radius: 2px;
@@ -97,15 +97,21 @@ div#stacked-chart {
     width: 100%;
 }
 
-.full-view{width: 100% !important;}
+.full-width{width: 100% !important;}
+.full-height{height:550px !important;}
 
 #faq-area{
-    margin-top: 20px;
+    margin: 20px 0 100px 0;
 	padding: 0;
 	font-size: 16px;
+	width: 100%;
 	h3, h4, p, ul, ol, li{margin:0; color: #5e5e5e;}
-	h3{padding:20px; background-color: #f9f9f9; border-bottom: 1px solid #f2f2f2;}
-	h4{padding:20px 20px 5px 20px;}
+	h3{padding:15px; background-color: #f9f9f9; border-bottom: 1px solid #f2f2f2;}
+	h4{padding:10px 20px 10px 20px;}
+	h4:focus {outline:0;}
+	.title-head{cursor:pointer;}
+	h4:hover{background-color:#f2f2f2;}
+	.active{background-color:#03a9f4;}
 	p{padding:0 20px;}
 	ol, li{margin: 0 10px;}
 }

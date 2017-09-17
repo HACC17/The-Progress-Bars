@@ -21,6 +21,7 @@
 		<script src="https://code.highcharts.com/modules/exporting.js"></script>
 		<script src="https://highcharts.github.io/export-csv/export-csv.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
+  		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	</head>
 	
 	<body>
@@ -112,7 +113,8 @@ Highcharts.setOptions({
 
 //expand charts for better viewing
 $('.expand-chart').click(function(){
-    $('#drill-down-chart, #line-stack-chart').toggleClass('full-view' );
+    $('#drill-down-chart, #line-stack-chart').toggleClass('full-width' );
+    $('#drill-down, #line-chart').toggleClass('full-height' );
     $('.open-up').toggle("slow");
     $('.close-up').toggle("slow");
     window.dispatchEvent(new Event('resize'));

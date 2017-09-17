@@ -103,7 +103,7 @@ class GrantsController < ApplicationController
 		f.html
 		f.xls
 		f.pdf do
-			render :pdf => "Report Pulled on" + " " + "#{Time.now.strftime("%m/%d/%Y")}", :orientation => 'Landscape'
+			render :pdf => "Report Pulled on" + " " + "#{Time.now.strftime("%m/%d/%Y")}", :orientation => 'Portrait'
 		end
     end
  
