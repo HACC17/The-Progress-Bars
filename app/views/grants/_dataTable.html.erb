@@ -1,5 +1,5 @@
-<table id="example" width="100%" class="display" cellspacing="0">
-	<thead  data-step="6" data-intro="You can view the data and slice and dice it however you want here, viewing individual project details. ">
+<table id="example" width="100%" class="display" cellspacing="0" data-step="4" data-intro="Expand Strategic Priorities & Results by clicking one. You can filter data down to specific records.">
+	<thead>
 		<tr>
 			<th class="thrity">Strategic Priority: Result</th>
 			<th class="fifty">Organization: Amount</th>
@@ -55,8 +55,9 @@
 		<tr>
 			<td class="thrity"></td>
 			<td class="fifty">
+				<%= grant.organization %>: <%= number_to_currency(grant.amount) %>
 				<div class="tooltip">
-					<%= grant.organization %>: <%= number_to_currency(grant.amount) %>
+					<svg style="width:16px;height:16px" viewBox="0 0 24 24"><path fill="#333" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" /></svg>
 					<span class="tooltiptext"><%= grant.project %></span>
 				</div>
 			</td>
@@ -68,7 +69,7 @@
 	<% end %>
 	</tbody>
 </table>
-<div class="export-area" data-step="7" data-intro="Click here to download an Excel spreadsheet of the data.">
+<div class="export-area">
 	<%= link_to grants_url(format: "xls") do %>
 		Raw Data <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#f9f9f9" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" /></svg>
 	<% end %>

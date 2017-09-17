@@ -1,7 +1,7 @@
 <!--<p id="flashNotice"><%#= notice %></p>-->
 
 <% if @grants.present? %>
-	<div id="dashboard-rollup" data-step="2" data-intro="The rollup dashboard provides quick information at a glance, and is updated immediately when new data is uploaded.">
+	<div id="dashboard-rollup" data-step="1" data-intro="This dashboard is a quick rollup of stats.">
 		<%= render 'cardRollup' %>
 	</div>
 	<div id="chart-area"> 
@@ -32,3 +32,11 @@
 
 <!-- uncomment this to run console on the page-->
 <%#= console %>
+
+<!-- Step Order for Help 
+1. rollup
+2. drilldown
+3. drill opti
+4. data table
+5. faq
+-->

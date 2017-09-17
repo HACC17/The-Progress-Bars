@@ -1,9 +1,9 @@
-<div id="drill-down" data-step="3" data-intro="This chart features drilldown capabilities. Click on any part of it to drill further into the data."></div>
+<div id="drill-down" data-step="2" data-intro="This is a drilldown chart. Click on any slice to drill into the data."></div>
 
-<div class="select-filters" data-step="4" data-intro="Click any button to change the chart, by changing the filters.">
+<div class="select-filters" data-step="3" data-intro="Click any button to change the chart, by changing the filters.">
 	<button id="by-location" class="btn" type="button"><span>Location</span></button>
 	<button id="by-priority" class="btn not-chosen" type="button"><span>Strategic Priority</span></button>
-	<button id="by-results" class="btn not-chosen" type="button"><span>Strategic Results</span></button>
+	<button id="by-results" class="btn not-chosen" type="button"><span>Strategic Results</span></button>	
 </div>
 
 <script>
@@ -15,7 +15,9 @@ drillDownChart = new Highcharts.chart('drill-down', {
         type: 'pie'
     },
     title: {
-        text: 'Grant funding by Location'
+        //text: 'Grant funding by Location'
+        text: '<a class="highcharts-title expand-chart">Grant funding by Location  <svg class="open-up" style="width:18px;height:18px" viewBox="0 0 24 24"><path fill="#444" d="M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z" /></svg><svg class="close-up" style="display:none;width:18px;height:18px" viewBox="0 0 24 24"><path fill="#444" d="M19.5,3.09L15,7.59V4H13V11H20V9H16.41L20.91,4.5L19.5,3.09M4,13V15H7.59L3.09,19.5L4.5,20.91L9,16.41V20H11V13H4Z" /></svg></a>',
+        useHTML: true
     },
     subtitle: {
         text: 'Click slices to drill down.'

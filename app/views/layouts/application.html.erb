@@ -21,36 +21,32 @@
 		<script src="https://code.highcharts.com/modules/exporting.js"></script>
 		<script src="https://highcharts.github.io/export-csv/export-csv.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
-		
-		
 	</head>
 	
 	<body>
 		<!--nav bar -->
-		<nav class="navbar">		  
-			<h1 class="logo">
-			<%= link_to root_path do %>
-				<img src="https://19of32x2yl33s8o4xza0gf14-wpengine.netdna-ssl.com/wp-content/themes/oha/css/../images/OHA.jpg" style="height:42px; "><svg style="width:42px;height:42px" viewBox="0 0 24 24"><path fill="#2c4483" d="M21,11H13V3A8,8 0 0,1 21,11M19,13C19,15.78 17.58,18.23 15.43,19.67L11.58,13H19M11,21C8.22,21 5.77,19.58 4.33,17.43L10.82,13.68L14.56,20.17C13.5,20.7 12.28,21 11,21M3,13A8,8 0 0,1 11,5V12.42L3.83,16.56C3.3,15.5 3,14.28 3,13Z" /></svg>
-  			<% end %>
-  			</h1>
-			<ul class="nav" data-step="1" data-intro="You can view charts, view the data, or as an OHA Administrator you may upload fresh grant data">
-			  <li><a href="#chart-area">Grant Data Visualization</a></li>
-			  <li><a href="#example">Grant Table Data</a></li>
-			  <li><a class="expand-option">Grant Data Sync</a></li>
-			</ul>
-			<ul class="nav nav-right" data-step="8" data-intro="You can click Terms to view a glossary of terms, or click again to repeat this tutorial. If you're ready to go, click 'Done' and happy visualizing!">
-			  <li>
-			  	<a href="#faq-area">
-			  		Terms
-			  	</a>
-				</li>
-				<li>
-				<a onclick="javascript:introJs().start();">
-					Help<svg style="width:18px;height:18px" viewBox="0 0 24 24"><path fill="#454545" d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z" /></svg>
-				</a>
-			</li>
-			</ul>	
-			<%= render 'massUpload' %>
+		<nav class="navbar">
+			<div class="navi-area">
+				<h1 class="logo">
+				<%= link_to root_path do %>
+					<img src="https://19of32x2yl33s8o4xza0gf14-wpengine.netdna-ssl.com/wp-content/themes/oha/css/../images/OHA.jpg" style="height:42px; "><svg style="width:42px;height:42px" viewBox="0 0 24 24"><path fill="#2c4483" d="M21,11H13V3A8,8 0 0,1 21,11M19,13C19,15.78 17.58,18.23 15.43,19.67L11.58,13H19M11,21C8.22,21 5.77,19.58 4.33,17.43L10.82,13.68L14.56,20.17C13.5,20.7 12.28,21 11,21M3,13A8,8 0 0,1 11,5V12.42L3.83,16.56C3.3,15.5 3,14.28 3,13Z" /></svg>
+				<% end %>
+				</h1>
+				<ul class="nav">
+				  <li><a href="#chart-area">Data Charts</a></li>
+				  <li><a href="#example">Table Rollup</a></li>
+				  <li><a class="expand-option">Data Sync</a></li>
+				</ul>
+				<ul class="nav nav-right">
+				  <li><a href="#faq-area">FAQs</a></li>
+				  <li>
+					<a onclick="javascript:introJs().start();">
+						Help<svg style="width:18px;height:18px" viewBox="0 0 24 24"><path fill="#454545" d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z" /></svg>
+					</a>
+				  </li>
+				</ul>	
+				<%= render 'massUpload' %>
+			</div>
 		</nav><!--/nav bar-->
 		<div id="main-content">
     		<%= yield %>
@@ -85,7 +81,7 @@ $('a[href*="#"]')
         // Only prevent default if animation is actually gonna happen
         event.preventDefault();
         $('html, body').animate({
-          scrollTop: target.offset().top
+          scrollTop: target.offset().top - 120
         }, 1200, function() {
           // Callback after animation
 
@@ -94,11 +90,32 @@ $('a[href*="#"]')
     }
   });
 
+//sticky navigation
+var myNavigation = $(".navbar");
+    stickyDiv = "sticky";
+    myHeader = $('.header').height();
+
+$(window).scroll(function() {
+  if( $(this).scrollTop() > myHeader ) {
+    myNavigation.addClass(stickyDiv);
+  } else {
+    myNavigation.removeClass(stickyDiv);
+  }
+});
+
 //comma seperator for currency
 Highcharts.setOptions({
 	lang: {
 		thousandsSep: ','
 	}
+});
+
+//expand charts for better viewing
+$('.expand-chart').click(function(){
+    $('#drill-down-chart, #line-stack-chart').toggleClass('full-view' );
+    $('.open-up').toggle("slow");
+    $('.close-up').toggle("slow");
+    window.dispatchEvent(new Event('resize'));
 });
 
 //$("#flashNotice").fadeOut(3000);
