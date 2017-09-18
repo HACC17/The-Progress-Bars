@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<%= csrf_meta_tags %>
 		
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.css">
 		
@@ -21,7 +21,7 @@
 		<script src="https://code.highcharts.com/modules/exporting.js"></script>
 		<script src="https://highcharts.github.io/export-csv/export-csv.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
-  		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	</head>
 	
 	<body>
@@ -36,6 +36,7 @@
 				<ul class="nav">
 				  <li><a href="#chart-area">Data Charts</a></li>
 				  <li><a href="#example">Table Rollup</a></li>
+				  <li><%= link_to "Executive Report", grants_path(@grants, :format => :pdf) %></li>
 				  <li><a class="expand-option">Data Sync</a></li>
 				</ul>
 				<ul class="nav nav-right">

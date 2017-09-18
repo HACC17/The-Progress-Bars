@@ -3,6 +3,7 @@
 		<tr>
 			<th class="thrity">Strategic Priority: Result</th>
 			<th class="fifty">Organization: Amount</th>
+			<!-- These are the drop-down filters for only seeing certain types of grants. -->
 			<th class="responsive-hide">
 				<select id='locationSelect'>
 					<option value="">All Locations</option>
@@ -51,6 +52,11 @@
 	</tfoot>
 	
 	<tbody>
+	<!-- For each grant in the database, show its organization, its funding, 
+		 what the project was about, what island/location was affected, the type of grant,
+		 the fiscal year this grant was awarded, and what strategic priority and result 
+		 the grants were relevant toward. 
+	-->
 		<% @grantData.each do |grant| %>	
 		<tr>
 			<td class="thrity"></td>
@@ -138,7 +144,8 @@ $(document).ready(function() {
             tr.addClass('shown');
         }
     } );
-
+	
+//The following functions are activated whenever the drop-downs are changed. It re-does the filter.
 	$("#fy").on("change", function(e) {
 		var fiscal = $(this).val();
 			table.column(4).search(fiscal).draw();

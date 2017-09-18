@@ -47,6 +47,23 @@ drillDownChart = new Highcharts.chart('drill-down', {
         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
         pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>${point.y:,.0f}<br/>'
     },
+//	   Construct the array of values in the series through tapping into the ruby database
+//	   upon first rendering the page. The typical static series would look something like:
+//	   series: [ 
+//			{
+//				name: 'string',
+//				data: [12,13,14], 
+//				drilldown: 'string'
+//			}, 
+//			{
+//				name: 'another string',
+//				data: [34,35,36],
+//				drilldown: 'string'
+//			}
+//		]
+//		
+//		The last iteration of the loop is cut off because the final set in the series must
+//		end without a comma. 'drilldown' represents the id of the series of data within the slice selected.
     series: [{
         name: 'Locations',
         colorByPoint: true,
@@ -67,6 +84,10 @@ drillDownChart = new Highcharts.chart('drill-down', {
     }
 		]
     }],
+	
+//  Drilldown has a similar format to series above, except it also has an id, which in this case
+//	is identical to its name, which is identical to its corresponding 'drilldown' title in the main series.
+
     drilldown: {
         series: [
 		<% index = 0
@@ -102,6 +123,10 @@ drillDownChart = new Highcharts.chart('drill-down', {
 	
 });
 
+/*  The following buttons re-create the entire drilldown chart based on a different set of data.
+	This is because drilldown data within a series of data seems to update differently than
+	first-layer series data, and therefore cannot simply be called by an update() function.
+*/
 $('#by-priority').click(function (e) {
   $( this ).removeClass( "not-chosen" );
   $("#by-location").addClass( "not-chosen" );

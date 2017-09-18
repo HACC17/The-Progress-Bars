@@ -69,6 +69,23 @@ var stackedChart = Highcharts.chart('stacked', {
             }
         }
     },
+	
+//	   Construct the array of values in the series through tapping into the ruby database
+//	   upon first rendering the page. The typical static series would look something like:
+//	   series: [ 
+//			{
+//				name: 'string',
+//				data: [12,13,14] 
+//			}, 
+//			{
+//				name: 'another string',
+//				data: [34,35,36]
+//			}
+//		]
+//		
+//		The last iteration of the loop is cut off because the final set in the series must
+//		end without a comma.
+	
     series: [
 	<% index = 0
 	while index < @uPriorities.length - 1%>
@@ -84,6 +101,9 @@ var stackedChart = Highcharts.chart('stacked', {
     }
 	]
 });
+
+
+/*The following all update the chart with new data or a new format. */
 
 $('#stacked-results').click(function () {
 	$( this ).removeClass( "not-chosen" );

@@ -28,7 +28,9 @@ class GrantsController < ApplicationController
   # GET /grants
   # GET /grants.json
   def index
-	preferredY = "amount"
+	preferredY = "amount" #The preferred measurement for impact of a grant is the funding given.
+	#The number of Native Hawaiians / people in general served is less reliable due to many NULL values
+	#due to NULL being given to large events where the exact number affected is hard to determine.
     @grants = Grant.all
     @grantData = @grants.order("fiscal_year DESC")
     @grant_count = @grants.count

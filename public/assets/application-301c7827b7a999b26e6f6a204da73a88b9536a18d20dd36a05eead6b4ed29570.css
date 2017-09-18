@@ -1,3 +1,259 @@
+/* line 6, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+table select {
+  color: #5e5e5e;
+  border: thin solid #777;
+  background-color: #fff;
+  border-radius: 0;
+  background: transparent;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px;
+  -webkit-appearance: none;
+  background-image: url(/assets/dropdown-bbb9ff80626af3b187a5e6bc85b143f905d3272fc50aa11b690ba18cf6e22239.png);
+  background-repeat: no-repeat;
+  background-position: 92% center;
+  width: 180px;
+  cursor: pointer;
+}
+
+/* line 23, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup {
+  width: 100%;
+  text-align: center;
+}
+/* line 26, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .card {
+  text-align: left;
+  height: 140px;
+  width: 220px;
+  margin: 0 10px 10px 0;
+  display: inline-grid;
+  padding: 0 0 0 10px;
+  color: #f9f9f9;
+  background-position: 90% 50%;
+}
+/* line 36, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .purple {
+  background-color: purple;
+  background-image: url(/assets/purpleCard-fe383d22548608b8e36c089e5bb73d60b5f6657a6f6d269267c6d5f7176d628b.jpg);
+}
+/* line 40, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .red {
+  background-color: red;
+  background-image: url(/assets/redCard-2cb49df05bacf015ab96d6495d27a009cabfe93f6f6ee00c21e2f56f6b944b90.jpg);
+}
+/* line 44, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .blue {
+  background-color: blue;
+  background-image: url(/assets/blueCard-f2aa9d598484a01f537174219e5bfc1d4fbfbdd6d052a5be81945adfb8a30b51.jpg);
+}
+/* line 48, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .orange {
+  background-color: orange;
+  background-image: url(/assets/orangeCard-409b36972759eff30f171dbd844211728352d25bbccce04796bf488f56f61619.jpg);
+}
+/* line 52, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .green {
+  background-color: green;
+  background-image: url(/assets/greenCard-566096045003a1ac740ecb1047f0c525c344a351951f5070e11175e4201393c4.jpg);
+}
+/* line 56, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup p {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+/* line 57, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup p.stat-number {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px 0 0 0;
+}
+/* line 62, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .stat-title {
+  font-size: 16px;
+  font-weight: normal;
+}
+/* line 66, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .stat-year {
+  font-size: 20px;
+  font-weight: normal;
+}
+/* line 70, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .more-info {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* line 76, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#drill-down, #line-chart, #stacked-grouped-bar-chart, #stacked {
+  margin: 0 auto;
+  height: 400px;
+}
+
+/* line 77, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#drill-down-chart, #stacked-chart, #line-stack-chart, #faq-area {
+  background: #fff;
+  border-radius: 2px;
+  display: inline;
+  float: left;
+  /*box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);*/
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16), 0 0px 0px 0 rgba(0, 0, 0, 0.12);
+  padding: 10px 0;
+  margin: 10px 1% 10px 0;
+}
+
+/* line 88, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+div#drill-down-chart {
+  width: 48.5%;
+  clear: left;
+}
+
+/* line 92, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+div#line-stack-chart {
+  width: 49.5%;
+}
+
+/* line 96, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+div#stacked-chart {
+  width: 100%;
+}
+
+/* line 100, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+.full-width {
+  width: 100% !important;
+}
+
+/* line 101, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+.full-height {
+  height: 550px !important;
+}
+
+/* line 103, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area {
+  margin: 20px 0 100px 0;
+  padding: 0;
+  font-size: 16px;
+  width: 100%;
+}
+/* line 108, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area h3, #faq-area h4, #faq-area p, #faq-area ul, #faq-area ol, #faq-area li {
+  margin: 0;
+  color: #5e5e5e;
+}
+/* line 109, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area h3 {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #f2f2f2;
+}
+/* line 110, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area h4 {
+  padding: 10px 20px 10px 20px;
+}
+/* line 111, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area h4:focus {
+  outline: 0;
+}
+/* line 112, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area .title-head {
+  cursor: pointer;
+}
+/* line 113, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area h4:hover {
+  background-color: #f2f2f2;
+}
+/* line 114, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area .active {
+  background-color: #03a9f4;
+}
+/* line 115, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area p {
+  padding: 0 20px;
+}
+/* line 116, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+#faq-area ol, #faq-area li {
+  margin: 0 10px;
+}
+
+/* line 119, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+.select-filters {
+  text-align: center;
+}
+
+/* line 120, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+.chart-type-select {
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  opacity: .95;
+  margin-top: -10px;
+}
+
+/* line 121, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/grants.scss */
+.not-chosen {
+  opacity: .4;
+}
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+#pdf{
+	margin: 0 auto;
+	font-family: 'Raleway', serif;
+	font-size: 14px;
+	overflow-x: hidden;
+	color: #333;
+}
+#pdf h2{text-align:center; margin:0 0 10px 0; padding:10px 0; font-weight:normal; background-color:#f9f9f9;}
+
+#row{text-align:center;}
+.rollup-card{width: 200px; display:inline-block; text-align:left;padding:10px}
+.rt-border{border-right: 1px dotted #5e5e5e;}
+.bt-border{border-bottom: 1px dotted #5e5e5e; }
+.rollup-card p{font-weight:bold; font-size:18px; margin:0; color: #0d4f02}
+.rollup-card span{font-weight:normal; font-size:14px; color: #333; }
+.padding{padding-bottom:15px;}
+
+#top-chart{border-bottom: 1px dotted #5e5e5e;padding-top:15px; padding-bottom:10px; border-top: 1px dotted #5e5e5e;}
+#bottom-chart{padding-top:10px;}
+/* line 1, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 5, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 11, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 18, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 28, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 34, /Users/aneesmerzi/projects/tester/app/assets/stylesheets/scaffolds.scss */
+label {
+  display: block;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,8 +266,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
 
 /**
@@ -21,6 +277,7 @@
  * @copyright 2015 Google, Inc.
  * @link https://github.com/google/material-design-lite
  */
+
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 html {
