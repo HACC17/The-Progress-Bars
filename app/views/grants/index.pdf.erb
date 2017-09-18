@@ -100,7 +100,7 @@ Highcharts.chart('container1', {
                 lineColor: '#666666'
             }
         },
-		series: {
+		series: { animation: false,
             dataLabels: {
                 enabled: false
             }
@@ -163,8 +163,8 @@ Highcharts.chart('container2', {
 		pointFormat: '{series.name}: ${point.y:,.0f}'
 
     },
-    plotOptions: {
-        column: {
+    plotOptions: {  
+        column: {animation: false,
             dataLabels: {
                 enabled: false,
                 color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
