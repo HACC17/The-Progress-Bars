@@ -125,10 +125,23 @@ $(document).ready(function() {
                 	$(".group_"+gid).slideToggle(300);
                   });
                  
-            } 
+            }
         }
     } );  
 
+  //The following functions are activated whenever the drop-downs are changed. It re-does the filter.
+	$("#fy").on("change", function(e) {
+		var fiscal = $(this).val();
+			table.column(4).search(fiscal).draw();
+	});
+	$("#grantType").on("change", function(e) {
+		var fiscal = $(this).val();
+			table.column(3).search(fiscal).draw();
+	});
+	$("#locationSelect").on("change", function(e) {
+		var localSel = $(this).val();
+			table.column(2).search(localSel).draw();
+	});
 
 	$('#example tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
@@ -145,19 +158,6 @@ $(document).ready(function() {
         }
     } );
 	
-//The following functions are activated whenever the drop-downs are changed. It re-does the filter.
-	$("#fy").on("change", function(e) {
-		var fiscal = $(this).val();
-			table.column(4).search(fiscal).draw();
-	});
-	$("#grantType").on("change", function(e) {
-		var fiscal = $(this).val();
-			table.column(3).search(fiscal).draw();
-	});
-	$("#locationSelect").on("change", function(e) {
-		var localSel = $(this).val();
-			table.column(2).search(localSel).draw();
-	});
 } );
 </script>
 

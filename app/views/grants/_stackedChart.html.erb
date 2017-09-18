@@ -12,7 +12,7 @@ var stackedChart = Highcharts.chart('stacked', {
         type: 'column'
     },
     title: {
-        text: 'Grant Money Awarded Per Year, by Strategic Priority'
+        text: 'Grant Money Awarded by Strategic Priority'
     },
     xAxis: {
         categories:  <%= raw @uYears %> 
@@ -41,7 +41,7 @@ var stackedChart = Highcharts.chart('stacked', {
         borderWidth: 1,
         shadow: false
     },
-	exporting: { buttons: { contextButton: {
+	exporting: { filename: 'Grant Money Awarded by Strategic Priority', buttons: { contextButton: {
 		menuItems: [{
 		textKey: 'downloadPNG',
 		onclick: function () {
@@ -110,7 +110,7 @@ $('#stacked-results').click(function () {
 	$("#stacked-priority").addClass( "not-chosen" );
 	stackedChart.update({
        title: {
-        text: 'Grant Money Awarded Per Year, by Strategic Result'
+        text: 'Grant Money Awarded by Strategic Result'
 		}
     });
 	
@@ -144,7 +144,7 @@ $('#stacked-priority').click(function () {
 	$("#stacked-results").addClass( "not-chosen" );
 	stackedChart.update({
        title: {
-        text: 'Grant Money Awarded Per Year, by Strategic Priority'
+        text: 'Grant Money Awarded by Strategic Priority'
 		}
     });
 	
