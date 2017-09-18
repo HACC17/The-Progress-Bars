@@ -3,9 +3,9 @@
 This is Team Progress Bars code repo for the Hawaii Annual Code Challenge 2017. We got after problem #6: Visualizing OHA Grant Data. Our solution includes data rollups, charts that are filterable and drillable, filterable data table, and data export options.
 
 ## TLDR (Quick Links)<a name="live-demo"></a>
-[Live Demo](https://hacc2017-progress-bars.herokuapp.com/)
-[Invision Prototype (3rd Iteration)](https://invis.io/HQDIXHZYM)
-[More Details, Photos, & Video (Devpost)](https://devpost.com/software/oha-grants-data-visualization)
+* [Live Demo](https://hacc2017-progress-bars.herokuapp.com/)
+* [Invision Prototype (3rd Iteration)](https://invis.io/HQDIXHZYM)
+* [More Details, Photos, & Video (Devpost)](https://devpost.com/software/oha-grants-data-visualization)
 
 ## Table of Contents
 1. [The Challenge](#the-challenge)
