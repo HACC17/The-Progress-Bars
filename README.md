@@ -37,7 +37,7 @@ Thousands of data points were provided ... this data needed to be turned into a 
 
 https://hacc2017-progress-bars.herokuapp.com/
 
-Please note:  The live demo is hosted on a free instance of Heroku.   That means it may take a few minutes to spin up.  So if it seems non-responsive when you first access it, please make yourself a cup of coffee and give it a few moments. You can also contact sid@sidsavara.com in case our instance somehow goes down due to being too busy, I have a second "secret" heroku instance.
+Please note:  The live demo is hosted on a free instance of Heroku.   That means it may take a few minutes to spin up.  So if it seems non-responsive when you first access it, please make yourself a cup of coffee and give it a few moments. You can also contact me - contact@sidsavara.com in case our instance somehow goes down due to being too busy, I have a second "secret" heroku instance.
 
 <sub><sup>[Back to top :arrow_heading_up:](#oha-grant-data-visualization)</sup></sub>
 
