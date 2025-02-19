@@ -1,3 +1,6 @@
+<!--<%
+=begin %>
+<h1>New Individual Grant</h1>
 <%= form_with(model: grant, local: true) do |form| %>
 	<% if grant.errors.any? %>
 		<div id="error_explanation">
@@ -40,5 +43,8 @@
     <%= form.submit %>
   </div>
 <% end %>
+<%= link_to 'Back', grants_path %>
+<%
+=end %>-->
 
 

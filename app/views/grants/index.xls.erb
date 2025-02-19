@@ -12,6 +12,10 @@
 				<Cell><Data ss:Type="String">Organization</Data></Cell>
 				<Cell><Data ss:Type="String">Location</Data></Cell>
 				<Cell><Data ss:Type="String">Amount</Data></Cell>
+				<Cell><Data ss:Type="String">Status</Data></Cell>
+				<Cell><Data ss:Type="String">Project</Data></Cell>
+				<Cell><Data ss:Type="String">Strategic Priority</Data></Cell>
+				<Cell><Data ss:Type="String">Strategic Results</Data></Cell>
 			</Row>
 		<% @grants.each do |g| %>
 			<Row>
@@ -20,6 +24,10 @@
 				<Cell><Data ss:Type="String"><%= g.organization %></Data></Cell>
 				<Cell><Data ss:Type="String"><%= g.location %></Data></Cell>
 				<Cell><Data ss:Type="String"><%= g.amount %></Data></Cell>
+				<Cell><Data ss:Type="String"><%= g.humanStatus %></Data></Cell>
+				<Cell><Data ss:Type="String"><%= g.project %></Data></Cell>
+				<Cell><Data ss:Type="String"><%= g.strategic_priority %></Data></Cell>
+				<Cell><Data ss:Type="String"><%= g.strategic_results %></Data></Cell>
 			</Row>						
 		<% end %>
 		</Table>

@@ -1,5 +1,5 @@
 class GrantsController < ApplicationController
-  before_action :set_grant, only: [:show, :edit, :update, :destroy]
+  before_action :set_grant, only: [:show]
   
   #rudimentary authentication
   http_basic_authenticate_with name: "oha", password: "progress_bars", except: :index
@@ -23,101 +23,92 @@ class GrantsController < ApplicationController
       format.json { head :no_content }
     end
   end
-    
+	
+	
   # GET /grants
   # GET /grants.json
   def index
+	preferredY = "amount" #The preferred measurement for impact of a grant is the funding given.
+	#The number of Native Hawaiians / people in general served is less reliable due to many NULL values
+	#due to NULL being given to large events where the exact number affected is hard to determine.
     @grants = Grant.all
+    @grantData = @grants.order("fiscal_year DESC")
     @grant_count = @grants.count
-    @year_count = @grants.group(:fiscal_year).order(:fiscal_year).count
-    @grant_type_count = @grants.group(:grant_type).order(:grant_type).count
-    @strategic_priority_count = @grants.group(:strategic_priority).order(:strategic_priority).count
-	@strategic_results_count = @grants.group(:strategic_results).order(:strategic_results).count
-	@location_count = @grants.group(:location).order(:location).count
+	@award_amount = @grants.pluck(:amount).sum
+	@served = @grants.pluck("sum(nh_served)", "sum(total_served)")
+	@inProgress = @grants.where(grantStatusID: 2).count
 	
-	#fy query
-    @fy13 = @grants.where("fiscal_year = ?", 2013)
-    @fy14 = @grants.where("fiscal_year = ?", 2014)
-    @fy15 = @grants.where("fiscal_year = ?", 2015)
-    @fy16 = @grants.where("fiscal_year = ?", 2016)
-    
-    #by grant type query
-    @ahahui = @grants.where("grant_type = ?", "Ahahui").count
-    @bot = @grants.where("grant_type = ?", "BOT Initiative").count
-    @community_grant = @grants.where("grant_type = ?", "Community Grant").count
-    @sponsorship = @grants.where("grant_type = ?", "Sponsorship").count
-    
-    #by strategic priority
-    @land = @grants.where("strategic_priority = ?", "Land & Water").count
-    @edu = @grants.where("strategic_priority = ?", "Education").count
-    @eco = @grants.where("strategic_priority = ?", "Economic Self-Sufficiency").count
-    @health = @grants.where("strategic_priority = ?", "Health").count
-    @gov = @grants.where("strategic_priority = ?", "Governance").count
-    @culture = @grants.where("strategic_priority = ?", "Culture").count
+	#These are arrays of the unique values for each parameter. Unique locations, unique fiscal years...
+	@uLocations = @grants.distinct.pluck(:location)	
+	@uYears = @grants.distinct.order(:fiscal_year).pluck(:fiscal_year)
+	@uPriorities = @grants.distinct.pluck(:strategic_priority)
+	@uResults = @grants.distinct.pluck(:strategic_results)
+	@uType = @grants.distinct.pluck(:grant_type)
+	
+	#Total funding, grouped by location
+	@sumLocations = @grants.group("location").pluck("sum(amount)")
+		
+	#Total funding, grouped by strategic priority
+	@sumPriorities = @grants.group("strategic_priority").pluck("sum(amount)")
+	
+	#total funding, grouped by strategic results
+	@sumResults = @grants.group("strategic_results").pluck("sum(amount)")
+	
+	#By grant type.
+	@sumType = @grants.group("grant_type").pluck("sum(amount)")
+	
+	#This is a 2-d array of the preferred measurement for each island, for each year.
+	#Inner array is each year. Outer array is location.
+	#For example, [0][0] would be a location in 2013, but [0][1] is 2014.
+	@amountPerYearByLocation = Array.new
+	@uLocations.each do |loc|
+			@locArray = Array.new
+			@uYears.each do |year|
+				@locArray.push(@grants.where(location: loc).where(fiscal_year: year).sum(preferredY).to_f)
+			end
+			@amountPerYearByLocation.push(@locArray)
+	end
+	#This is a 2-d array of the preferred measurement for each strategic priority, for each year.
+	#Inner array is each year. Outer array is location.
+	#For example, [0][0] would be a priority in 2013, but [0][1] is 2014.
+	@amountPerYearByPriority = Array.new
+	@uPriorities.each do |pri|
+			@priArray = Array.new
+			@uYears.each do |year|
+				@priArray.push(@grants.where(strategic_priority: pri).where(fiscal_year: year).sum(preferredY).to_f)
+			end
+			@amountPerYearByPriority.push(@priArray)
+	end
+	
+	#This is a 2-d array of the preferred measurement for each strategic results, for each year.
+	@amountPerYearByResults = Array.new
+	@uResults.each do |res|
+			@resArray = Array.new
+			@uYears.each do |year|
+				@resArray.push(@grants.where(strategic_results: res).where(fiscal_year: year).sum(preferredY).to_f)
+			end
+			@amountPerYearByResults.push(@resArray)
+	end
+		
+	#Grant Type by year, funding
+	@amountPerYearByType = Array.new
+	@uType.each do |typ|
+			@typArray = Array.new
+			@uYears.each do |year|
+				@typArray.push(@grants.where(grant_type: typ).where(fiscal_year: year).sum(preferredY).to_f)
+			end
+			@amountPerYearByType.push(@typArray)
+	end
  
  	#export to all data to excel
 	respond_to do |f|
 		f.html
 		f.xls
 		f.pdf do
-			render :pdf => "Report Pulled on" + " " + "#{Time.now.strftime("%m/%d/%Y")}", :orientation => 'Landscape'
+			render :pdf => "Report Pulled on" + " " + "#{Time.now.strftime("%m/%d/%Y")}", :orientation => 'Portrait'
 		end
     end
  
-  end
-
-  # GET /grants/1
-  # GET /grants/1.json
-  def show
-  end
-
-  # GET /grants/new
-  def new
-    @grant = Grant.new
-  end
-
-  # GET /grants/1/edit
-  def edit
-  end
-
-  # POST /grants
-  # POST /grants.json
-  def create
-    @grant = Grant.new(grant_params)
-
-    respond_to do |format|
-      if @grant.save
-        format.html { redirect_to grants_url, notice: 'Grant was successfully created.' }
-        format.json { render :index, status: :created, location: @grant }
-      else
-        format.html { render :new }
-        format.json { render json: @grant.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /grants/1
-  # PATCH/PUT /grants/1.json
-  def update
-    respond_to do |format|
-      if @grant.update(grant_params)
-        format.html { redirect_to grants_url, notice: 'Grant was successfully updated.' }
-        format.json { render :index, status: :ok, location: @grant }
-      else
-        format.html { render :edit }
-        format.json { render json: @grant.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /grants/1
-  # DELETE /grants/1.json
-  def destroy
-    @grant.destroy
-    respond_to do |format|
-      format.html { redirect_to grants_url, notice: 'Grant was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

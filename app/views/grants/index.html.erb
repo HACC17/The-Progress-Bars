@@ -1,47 +1,42 @@
-<h1>Grants</h1>
+<!--<p id="flashNotice"><%#= notice %></p>-->
 
-<% if flash[:notice] %>
-	<p id="flashNotice" class="messages-notice"><%= notice %></p>
-<% end %>
-
-<%= link_to 'New Grant', new_grant_path %><br/>
-<% if @grants.empty? %>
-<% else %>
-	<%= link_to 'Export All Data', grants_url(format: "xls") %> | <%= link_to "View PDF Report", grants_path(@grants, :format => :pdf) %> | <%= link_to 'Delete All Data', kill_grants_url, :method => :delete %><br/>
-
-	<h3>DB Sample Queries</h3>
-	There are currently <b><%= @grant_count %></b> records in the Database!<br/>
-	Year Count <b><%= @year_count %></b><br/>
-	Grant Type Count <b><%= @grant_type_count %></b><br/>
-	Strategic Priority Count <b><%= @strategic_priority_count %></b><br/> 
-	Strategic Results Count <b><%= @strategic_results_count %></b><br/>
-	Location Count <b><%= @location_count %></b><br/>
-	<br/>
+<% if @grants.present? %>
+	<div id="dashboard-rollup" data-step="1" data-intro="This dashboard is a quick rollup of stats.">
+		<%= render 'cardRollup' %>
+	</div>
+	<div id="chart-area"> 
+		<!-- load drill-down chart -->
+		<div id="drill-down-chart">
+			<%= render 'drillDownChart' %>
+		</div>
+		
+		<!-- load line chart -->
+		<div id="line-stack-chart">
+			<%= render 'lineChart' %>
+		</div>
+		<!-- load stacked chart -->
+		<div id="stacked-chart">
+			<%= render 'stackedChart' %>
+		</div>
+		
+	</div>
 	
-<% end %>
-
-<!-- spit out data block -->
-<% @grants.each do |grant| %><br/>
-	Fiscal Year: <%= grant.fiscal_year %><br/>
-	Grant type: <%= grant.grant_type %><br/>
-	Organization: <%= grant.organization %><br/>      
-	Project: <%= grant.project %><br/>      
-	Amount: <%= grant.amount %><br/>      
-	Location: <%= grant.location %><br/>     
-	Strategic priority: <%= grant.strategic_priority %><br/>       
-	Strategic results: <%= grant.strategic_results %><br/>        
-	Total served: <%= grant.total_served %><br/>    
-	Nh served: <%= grant.nh_served %><br/>       
-	Grantstatusid: <%= grant.grantStatusID %><br/>
+	<!-- load data table -->
+	<%= render 'dataTable' %>	
 	
-	<%= link_to 'Show', grant %>
-	<%= link_to 'Edit', edit_grant_path(grant) %>
-	<%= link_to 'Destroy', grant, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
-<% end %>
+	<!-- faq area -->
+	<%= render 'faqArea' %>	
 
-<script>
-	$("#flashNotice").fadeOut(2500);
-</script>
+<% else %>	
+<% end %>
 
 <!-- uncomment this to run console on the page-->
 <%#= console %>
+
+<!-- Step Order for Help 
+1. rollup
+2. drilldown
+3. drill opti
+4. data table
+5. faq
+-->

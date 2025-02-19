@@ -1,0 +1,163 @@
+<table id="example" width="100%" class="display" cellspacing="0" data-step="4" data-intro="Expand Strategic Priorities & Results by clicking one. You can filter data down to specific records.">
+	<thead>
+		<tr>
+			<th class="thrity">Strategic Priority: Result</th>
+			<th class="fifty">Organization: Amount</th>
+			<!-- These are the drop-down filters for only seeing certain types of grants. -->
+			<th class="responsive-hide">
+				<select id='locationSelect'>
+					<option value="">All Locations</option>
+					<option value="Continent">Continent</option>
+					<option value="Hawaii">Hawaii</option>
+					<option value="International">International</option>
+					<option value="Kauai">Kauai</option>
+					<option value="Kauai">Kauai</option>
+					<option value="Lanai">Kauai</option>
+					<option value="Maui">Molokai</option>		
+					<option value="Mulitple">Mulitple</option>
+					<option value="Oahu">Oahu</option>
+					<option value="Papahanaumokuakea">Papahanaumokuakea</option>
+					<option value="Polynesia">Polynesia</option>
+					<option value="Statewide">Statewide</option>
+				</select>
+			</th>
+			<th class="twenty-five">
+				<select id='grantType'>
+					<option value="">All Grant Types</option>
+					<option value="Ahahui">Ahahui</option>
+					<option value="BOT Initiative">BOT Initiative</option>
+					<option value="Community Grant">Community Grant</option>
+					<option value="Sponsorship">Sponsorship</option>
+				</select>
+			</th>
+			<th width="fifteen">
+				<select id='fy'>
+					<option value="">All Fiscal Years</option>
+					<option value="2013">2013</option>
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+					<option value="2016">2016</option>
+				</select>
+			</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</tfoot>
+	
+	<tbody>
+	<!-- For each grant in the database, show its organization, its funding, 
+		 what the project was about, what island/location was affected, the type of grant,
+		 the fiscal year this grant was awarded, and what strategic priority and result 
+		 the grants were relevant toward. 
+	-->
+		<% @grantData.each do |grant| %>	
+		<tr>
+			<td class="thrity"></td>
+			<td class="fifty">
+				<%= grant.organization %>: <%= number_to_currency(grant.amount) %>
+				<div class="tooltip">
+					<svg style="width:16px;height:16px" viewBox="0 0 24 24"><path fill="#333" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" /></svg>
+					<span class="tooltiptext"><%= grant.project %></span>
+				</div>
+			</td>
+			<td class="responsive-hide"><%= grant.location %></td>
+			<td class="twenty-five"><%= grant.grant_type %></td>
+			<td class="fifteen"><%= grant.fiscal_year %></td>
+			<td><%= grant.concatStrategic %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+<div class="export-area">
+	<%= link_to grants_url(format: "xls") do %>
+		Raw Data <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#f9f9f9" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" /></svg>
+	<% end %>
+</div>	
+
+<script>     
+$(document).ready(function() {
+    var table = $('#example').DataTable({
+        "columnDefs": [
+            { "visible": false, "targets": 5 }
+        ],
+		"columns":[
+		 {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''
+            }
+		],
+        "order": [[ 5, 'asc' ]],
+        "paging": false,
+        "lengthChange": false,
+        "drawCallback": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+
+            var last=null; 
+            var groupadmin = []; 
+            
+            api.column(5, {page:'current'} ).data().each( function ( group, i ) {
+
+                if ( last !== group ) {
+  
+                    $(rows).eq( i ).before(
+                        '<tr class="group" id="'+i+'"><td class="group-td" colspan="6">'+group+'</td></tr>'
+                    );
+                    groupadmin.push(i);
+                    last = group;
+                }
+            } );
+            for( var k=0; k < groupadmin.length; k++){
+				  // Code added for adding class to sibling elements as "group_<id>"  
+                  $("#"+groupadmin[k]).nextUntil("#"+groupadmin[k+1]).addClass(' group_'+groupadmin[k]); 
+                  // Code added for adding Toggle functionality for each group
+                  $("#"+groupadmin[k]).click(function(){
+                  	var gid = $(this).attr("id");
+                	$(".group_"+gid).slideToggle(300);
+                  });
+                 
+            }
+        }
+    } );  
+
+  //The following functions are activated whenever the drop-downs are changed. It re-does the filter.
+	$("#fy").on("change", function(e) {
+		var fiscal = $(this).val();
+			table.column(4).search(fiscal).draw();
+	});
+	$("#grantType").on("change", function(e) {
+		var fiscal = $(this).val();
+			table.column(3).search(fiscal).draw();
+	});
+	$("#locationSelect").on("change", function(e) {
+		var localSel = $(this).val();
+			table.column(2).search(localSel).draw();
+	});
+
+	$('#example tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    } );
+	
+} );
+</script>
+

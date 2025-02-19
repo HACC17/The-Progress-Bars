@@ -1,0 +1,65 @@
+<div id="stacked-grouped-bar-chart"></div>
+
+<script>
+Highcharts.chart('stacked-grouped-bar-chart', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grant Money Awarded Per Year, by Location'
+    },
+    xAxis: {
+        categories: <%= raw @uYears %> 
+    },
+    yAxis: {
+        allowDecimals: false,
+        min: 0,
+        title: {
+            text: 'Grant Money'
+        },
+		stackLabels: {
+            enabled: true,
+            style: {
+                fontWeight: 'bold',
+                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+		}
+    },
+
+    tooltip: {
+        formatter: function () {
+            return '<b>' + this.x + '</b><br/>' +
+                this.series.name + ': ' + this.y + '<br/>' +
+                'Total: ' + this.point.stackTotal;
+        }
+    },
+
+    plotOptions: {
+        column: {
+            stacking: 'normal'
+        }
+    },
+
+    series: [
+	<% index = 0
+		skipStatewide = 0
+		statewideIndex = -1;
+	while index + skipStatewide < @uLocations.length %>
+		{
+			name: '<%= raw @uLocations[index + skipStatewide] %>',
+			data: <%= raw @amountPerYearByLocation[index + skipStatewide] %>,
+			stack: 'Not Statewide'
+	    },
+		<% index = index + 1
+			if @uLocations[index] == "Statewide"
+				skipStatewide = 1
+				statewideIndex = index
+			end %>
+	<% end %>
+	{
+        name: '<%= raw @uLocations[statewideIndex] %>',
+        data: <%= raw @amountPerYearByLocation[statewideIndex] %>,
+		stack: 'Statewide'
+    }]
+});
+</script>

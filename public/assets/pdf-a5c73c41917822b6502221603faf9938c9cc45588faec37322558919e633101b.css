@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+#pdf{
+	margin: 0 auto;
+	font-family: 'Raleway', serif;
+	font-size: 14px;
+	overflow-x: hidden;
+	overflow-y:hidden;
+	color: #333;
+}
+#pdf h2{text-align:center; margin:0 0 10px 0; padding:10px 0; font-weight:normal; background-color:#f9f9f9;}
+
+#row{text-align:center;}
+.rollup-card{width: 200px; display:inline-block; text-align:left;padding:10px}
+.rt-border{border-right: 1px dotted #5e5e5e;}
+.bt-border{border-bottom: 1px dotted #5e5e5e; }
+.rollup-card p{font-weight:bold; font-size:18px; margin:0; color: #0d4f02}
+.rollup-card span{font-weight:normal; font-size:14px; color: #333; }
+.padding{padding-bottom:15px;}
+
+#top-chart{border-bottom: 1px dotted #5e5e5e;padding-top:15px; padding-bottom:10px; border-top: 1px dotted #5e5e5e;}
+#bottom-chart{padding-top:10px;}
+
+#container1, #container2, #bottom-chart, #top-chart{margin: 0 auto; width: 100%;}
+#container1{height: 350px;}
+#container2{height: 400px;}

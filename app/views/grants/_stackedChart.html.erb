@@ -1,0 +1,220 @@
+<div id="stacked"></div> 
+<div class="select-filters" data-step="4" data-intro="This chart allows you to change between bar and stacked charts, along with switching between Strategic Priority and Strategic Results.">
+	<svg id="toggle-grouped" class="chart-type-select" viewBox="0 0 24 24"><path fill="#000000" d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" /></svg>
+	<svg id="toggle-stacked" class="chart-type-select not-chosen" viewBox="0 0 24 24"><path fill="#000000" d="M22,21H2V3H4V19H6V17H10V19H12V16H16V19H18V17H22V21M18,14H22V16H18V14M12,6H16V9H12V6M16,15H12V10H16V15M6,10H10V12H6V10M10,16H6V13H10V16Z" /></svg><br/>
+	<button id="stacked-priority" class="btn" type="button"><span>Strategic Priority</span></button>
+	<button id="stacked-results" class="btn not-chosen" type="button"><span>Strategic Result</span></button>
+</div>
+
+<script>
+var stackedChart = Highcharts.chart('stacked', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grant Money Awarded by Strategic Priority'
+    },
+    xAxis: {
+        categories:  <%= raw @uYears %> 
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Grant Money'
+        },
+        stackLabels: {
+            enabled: false,
+            style: {
+                fontWeight: 'bold',
+                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+        }
+    },
+    legend: {
+        align: 'right',
+        x: -30,
+        verticalAlign: 'top',
+        y: 25,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false
+    },
+	exporting: { filename: 'Grant Money Awarded by Strategic Priority', buttons: { contextButton: {
+		menuItems: [{
+		textKey: 'downloadPNG',
+		onclick: function () {
+			this.exportChart();
+		}
+	}, {
+		textKey: 'downloadCSV',
+		onclick: function () {
+			this.downloadCSV();
+		}
+	}]
+}}},
+    
+    tooltip: {
+        
+        headerFormat: '<b>{point.x}</b><br/>',
+		pointFormat: '{series.name}: ${point.y:,.0f}'
+
+    },
+    plotOptions: {
+        column: {
+            dataLabels: {
+                enabled: false,
+                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+            }
+        }
+    },
+	
+//	   Construct the array of values in the series through tapping into the ruby database
+//	   upon first rendering the page. The typical static series would look something like:
+//	   series: [ 
+//			{
+//				name: 'string',
+//				data: [12,13,14] 
+//			}, 
+//			{
+//				name: 'another string',
+//				data: [34,35,36]
+//			}
+//		]
+//		
+//		The last iteration of the loop is cut off because the final set in the series must
+//		end without a comma.
+	
+    series: [
+	<% index = 0
+	while index < @uPriorities.length - 1%>
+		{
+			name: '<%= raw @uPriorities[index] %>',
+			data: <%= raw @amountPerYearByPriority[index] %>
+	    },
+		<% index = index + 1 %>
+	<% end %>
+	{
+        name: '<%= raw @uPriorities[index] %>',
+        data: <%= raw @amountPerYearByPriority[index] %>
+    }
+	]
+});
+
+
+/*The following all update the chart with new data or a new format. */
+
+$('#stacked-results').click(function () {
+	$( this ).removeClass( "not-chosen" );
+	$("#stacked-priority").addClass( "not-chosen" );
+	stackedChart.update({
+       title: {
+        text: 'Grant Money Awarded by Strategic Result'
+		}
+    });
+	
+	var newSeries = [
+	<% index = 0
+	while index < @uResults.length - 1%>
+		{
+			name: '<%= raw @uResults[index] %>',
+			data: <%= raw @amountPerYearByResults[index] %>
+	    },
+		<% index = index + 1 %>
+	<% end %>
+	{
+        name: '<%= raw @uResults[index] %>',
+        data: <%= raw @amountPerYearByResults[index] %>
+    }
+	];
+	
+	for (var i = stackedChart.series.length-1; i>=0; i--) {
+            stackedChart.series[i].remove();
+        }
+         for (var y = 0; y < newSeries.length; y++) {
+            stackedChart.addSeries(newSeries[y]);
+        }
+		
+	stackedChart.redraw();
+});
+
+$('#stacked-priority').click(function () {
+	$( this ).removeClass( "not-chosen" );
+	$("#stacked-results").addClass( "not-chosen" );
+	stackedChart.update({
+       title: {
+        text: 'Grant Money Awarded by Strategic Priority'
+		}
+    });
+	
+	var newSeries = [
+	<% index = 0
+	while index < @uPriorities.length - 1%>
+		{
+			name: '<%= raw @uPriorities[index] %>',
+			data: <%= raw @amountPerYearByPriority[index] %>
+	    },
+		<% index = index + 1 %>
+	<% end %>
+	{
+        name: '<%= raw @uPriorities[index] %>',
+        data: <%= raw @amountPerYearByPriority[index] %>
+    }
+	]
+	
+	for (var i = stackedChart.series.length-1; i>=0; i--) {
+            stackedChart.series[i].remove();
+        }
+        for (var y = 0; y < newSeries.length; y++) {
+            stackedChart.addSeries(newSeries[y]);
+        }
+		
+	stackedChart.redraw();
+	
+});
+$('#toggle-stacked').click(function () {
+	$( this ).removeClass( "not-chosen" );
+	$("#toggle-grouped").addClass( "not-chosen" );
+	stackedChart.update({
+		plotOptions: {
+        column: {
+            stacking: 'normal',
+            dataLabels: {
+                enabled: false,
+                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+            }
+        }
+    },   
+	tooltip: {
+        headerFormat: '<b>{point.x}</b><br/>',
+        pointFormat: '{series.name}: ${point.y:,.0f}<br/>Total: ${point.stackTotal:,.0f}',
+
+    }
+});
+stackedChart.redraw();
+});
+
+
+$('#toggle-grouped').click(function () {
+	$( this ).removeClass( "not-chosen" );
+	$("#toggle-stacked").addClass( "not-chosen" );
+	stackedChart.update({
+	plotOptions: {
+        column: {
+            stacking: null,
+            dataLabels: {
+                enabled: false,
+                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+            }
+        }
+    },
+	    tooltip: {
+        headerFormat: '<b>{point.x}</b><br/>',
+        pointFormat: '{series.name}: ${point.y:,.0f}',
+
+    },
+});
+stackedChart.redraw();
+});
+</script>
