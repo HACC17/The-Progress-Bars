@@ -1,0 +1,425 @@
+<div id="drill-down" data-step="2" data-intro="This is a drilldown chart. Click on any slice to drill into the data."></div>
+
+<div class="select-filters" data-step="3" data-intro="Click any button to change the chart, by changing the filters.">
+	<button id="by-location" class="btn" type="button"><span>Location</span></button>
+	<button id="by-priority" class="btn not-chosen" type="button"><span>Strategic Priority</span></button>
+	<button id="by-results" class="btn not-chosen" type="button"><span>Strategic Results</span></button>
+	<a class="highcharts-title expand-chart"><svg class="open-up" viewBox="0 0 24 24"><path fill="#444" d="M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z" /></svg><svg class="close-up" style="display:none;" viewBox="0 0 24 24"><path fill="#444" d="M19.5,3.09L15,7.59V4H13V11H20V9H16.41L20.91,4.5L19.5,3.09M4,13V15H7.59L3.09,19.5L4.5,20.91L9,16.41V20H11V13H4Z" /></svg></a>
+</div>
+
+<script>
+
+var priority = true;
+// Create the chart
+drillDownChart = new Highcharts.chart('drill-down', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        //text: 'Grant funding by Location'
+        text: 'Grant funding by Location'
+    },
+    subtitle: {
+        text: 'Click slices to drill down.'
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}<br/> ${point.y:,.0f}'
+            }
+        }
+    },
+	exporting: { filename: 'Grant funding by Location', buttons: { contextButton: {
+		menuItems: [{
+		textKey: 'downloadPNG',
+		onclick: function () {
+			this.exportChart();
+		}
+	}, {
+		textKey: 'downloadCSV',
+		onclick: function () {
+			this.downloadCSV();
+		}
+	}]
+}}},
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>${point.y:,.0f}<br/>'
+    },
+//	   Construct the array of values in the series through tapping into the ruby database
+//	   upon first rendering the page. The typical static series would look something like:
+//	   series: [ 
+//			{
+//				name: 'string',
+//				data: [12,13,14], 
+//				drilldown: 'string'
+//			}, 
+//			{
+//				name: 'another string',
+//				data: [34,35,36],
+//				drilldown: 'string'
+//			}
+//		]
+//		
+//		The last iteration of the loop is cut off because the final set in the series must
+//		end without a comma. 'drilldown' represents the id of the series of data within the slice selected.
+    series: [{
+        name: 'Locations',
+        colorByPoint: true,
+        data: [
+		<% index = 0
+	while index < @uLocations.length - 1 %>
+		{
+			name: '<%= raw @uLocations[index] %>',
+			y: <%= raw @sumLocations[index] %>,
+			drilldown: '<%= raw @uLocations[index] %>'
+	    },
+		<% index = index + 1 %>
+	<% end %>
+	{
+        name: '<%= raw @uLocations[index] %>',
+        y: <%= raw @sumLocations[index] %>,
+		drilldown: '<%= raw @uLocations[index] %>'
+    }
+		]
+    }],
+	
+//  Drilldown has a similar format to series above, except it also has an id, which in this case
+//	is identical to its name, which is identical to its corresponding 'drilldown' title in the main series.
+
+    drilldown: {
+        series: [
+		<% index = 0
+	while index < @uLocations.length - 1%>
+		{
+			name: '<%= raw @uLocations[index] %>',
+			id: '<%= raw @uLocations[index] %>',
+			data: [
+				<% innerIndex = 0
+				while innerIndex < @amountPerYearByLocation[index].length - 1 %>
+					['<%= raw @uYears[innerIndex] %>', <%= raw @amountPerYearByLocation[index][innerIndex] %>],
+					<% innerIndex = innerIndex + 1 %>
+				<% end %>
+				['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByLocation[index][innerIndex] %>]
+			]
+	    },
+		<% index = index + 1 %>
+	<% end %>
+		{
+			name: '<%= raw @uLocations[index] %>',
+			id: '<%= raw @uLocations[index] %>',
+			data: [
+				<% innerIndex = 0
+				while innerIndex < @amountPerYearByLocation[index].length - 1 %>
+					['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByLocation[index][innerIndex] %>],
+					<% innerIndex = innerIndex + 1 %>
+				<% end %>
+				['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByLocation[index][innerIndex] %>]
+			]
+	    }
+		]
+    }
+	
+});
+
+/*  The following buttons re-create the entire drilldown chart based on a different set of data.
+	This is because drilldown data within a series of data seems to update differently than
+	first-layer series data, and therefore cannot simply be called by an update() function.
+*/
+$('#by-priority').click(function (e) {
+  $( this ).removeClass( "not-chosen" );
+  $("#by-location").addClass( "not-chosen" );
+  $("#by-results").addClass( "not-chosen" );
+	drillDownChart.destroy();
+    drillDownChart2 = new Highcharts.chart('drill-down', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Grant funding by Strategic Priority'
+    },
+    subtitle: {
+        text: 'Click slices to drill down.'
+    },
+	exporting: { filename: 'Grant funding by Strategic Priority', buttons: { contextButton: {
+		menuItems: [{
+		textKey: 'downloadPNG',
+		onclick: function () {
+			this.exportChart();
+		}
+	}, {
+		textKey: 'downloadCSV',
+		onclick: function () {
+			this.downloadCSV();
+		}
+	}]
+}}},
+    
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}<br/> ${point.y:,.0f}'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>${point.y:,.0f}<br/>'
+	},
+    series: [{
+        name: 'Strategic Priorities',
+        colorByPoint: true,
+        data: [
+		<% index = 0
+	while index < @uPriorities.length - 1 %>
+		{
+			name: '<%= raw @uPriorities[index] %>',
+			y: <%= raw @sumPriorities[index] %>,
+			drilldown: '<%= raw @uPriorities[index] %>'
+	    },
+		<% index = index + 1 %>
+	<% end %>
+	{
+        name: '<%= raw @uPriorities[index] %>',
+        y: <%= raw @sumPriorities[index] %>,
+		drilldown: '<%= raw @uPriorities[index] %>'
+    }
+		]
+    }],
+    drilldown: {
+        series: [
+		<% index = 0
+	while index < @uPriorities.length - 1%>
+		{
+			name: '<%= raw @uPriorities[index] %>',
+			id: '<%= raw @uPriorities[index] %>',
+			data: [
+				<% innerIndex = 0
+				while innerIndex < @amountPerYearByPriority[index].length - 1 %>
+					['<%= raw @uYears[innerIndex] %>', <%= raw @amountPerYearByPriority[index][innerIndex] %>],
+					<% innerIndex = innerIndex + 1 %>
+				<% end %>
+				['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByPriority[index][innerIndex] %>]
+			]
+	    },
+		<% index = index + 1 %>
+	<% end %>
+		{
+			name: '<%= raw @uPriorities[index] %>',
+			id: '<%= raw @uPriorities[index] %>',
+			data: [
+				<% innerIndex = 0
+				while innerIndex < @amountPerYearByPriority[index].length - 1 %>
+					['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByPriority[index][innerIndex] %>],
+					<% innerIndex = innerIndex + 1 %>
+				<% end %>
+				['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByPriority[index][innerIndex] %>]
+			]
+	    }
+		]
+    }
+	
+});
+	drillDownChart = drillDownChart2;
+});
+
+
+$('#by-location').click(function (e) {
+  $( this ).removeClass( "not-chosen" );
+  $("#by-priority").addClass( "not-chosen" );
+  $("#by-results").addClass( "not-chosen" );
+	drillDownChart.destroy();
+var drillDownChart2 = new Highcharts.chart('drill-down', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Grant funding by Location'
+    },
+    subtitle: {
+        text: 'Click slices to drill down.'
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}<br/> ${point.y:,.0f}'
+            }
+        }
+    },
+	exporting: { filename: 'Grant funding by Location', buttons: { contextButton: {
+		menuItems: [{
+		textKey: 'downloadPNG',
+		onclick: function () {
+			this.exportChart();
+		}
+	}, {
+		textKey: 'downloadCSV',
+		onclick: function () {
+			this.downloadCSV();
+		}
+	}]
+}}},
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>${point.y:,.0f}<br/>'
+    },
+    series: [{
+        name: 'Locations',
+        colorByPoint: true,
+        data: [
+		<% index = 0
+	while index < @uLocations.length - 1 %>
+		{
+			name: '<%= raw @uLocations[index] %>',
+			y: <%= raw @sumLocations[index] %>,
+			drilldown: '<%= raw @uLocations[index] %>'
+	    },
+		<% index = index + 1 %>
+	<% end %>
+	{
+        name: '<%= raw @uLocations[index] %>',
+        y: <%= raw @sumLocations[index] %>,
+		drilldown: '<%= raw @uLocations[index] %>'
+    }
+		]
+    }],
+    drilldown: {
+        series: [
+		<% index = 0
+	while index < @uLocations.length - 1%>
+		{
+			name: '<%= raw @uLocations[index] %>',
+			id: '<%= raw @uLocations[index] %>',
+			data: [
+				<% innerIndex = 0
+				while innerIndex < @amountPerYearByLocation[index].length - 1 %>
+					['<%= raw @uYears[innerIndex] %>', <%= raw @amountPerYearByLocation[index][innerIndex] %>],
+					<% innerIndex = innerIndex + 1 %>
+				<% end %>
+				['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByLocation[index][innerIndex] %>]
+			]
+	    },
+		<% index = index + 1 %>
+	<% end %>
+		{
+			name: '<%= raw @uLocations[index] %>',
+			id: '<%= raw @uLocations[index] %>',
+			data: [
+				<% innerIndex = 0
+				while innerIndex < @amountPerYearByLocation[index].length - 1 %>
+					['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByLocation[index][innerIndex] %>],
+					<% innerIndex = innerIndex + 1 %>
+				<% end %>
+				['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByLocation[index][innerIndex] %>]
+			]
+	    }
+		]
+    }
+	
+});
+	drillDownChart = drillDownChart2;
+});
+
+
+$('#by-results').click(function (e) {
+  $( this ).removeClass( "not-chosen" );
+  $("#by-priority").addClass( "not-chosen" );
+  $("#by-location").addClass( "not-chosen" );
+	drillDownChart.destroy();
+var drillDownChart2 = new Highcharts.chart('drill-down', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Grant funding by Results'
+    },
+    subtitle: {
+        text: 'Click slices to drill down.'
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}<br/> ${point.y:,.0f}'
+            }
+        }
+    },
+	exporting: { filename: 'Grant funding by Results', buttons: { contextButton: {
+		menuItems: [{
+		textKey: 'downloadPNG',
+		onclick: function () {
+			this.exportChart();
+		}
+	}, {
+		textKey: 'downloadCSV',
+		onclick: function () {
+			this.downloadCSV();
+		}
+	}]
+}}},
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>${point.y:,.0f}<br/>'
+    },
+    series: [{
+        name: 'Strategic Results',
+        colorByPoint: true,
+        data: [
+		<% index = 0
+	while index < @uResults.length - 1 %>
+		{
+			name: '<%= raw @uResults[index] %>',
+			y: <%= raw @sumResults[index] %>,
+			drilldown: '<%= raw @uResults[index] %>'
+	    },
+		<% index = index + 1 %>
+	<% end %>
+	{
+        name: '<%= raw @uResults[index] %>',
+        y: <%= raw @sumResults[index] %>,
+		drilldown: '<%= raw @uResults[index] %>'
+    }
+		]
+    }],
+    drilldown: {
+        series: [
+		<% index = 0
+	while index < @uResults.length - 1%>
+		{
+			name: '<%= raw @uResults[index] %>',
+			id: '<%= raw @uResults[index] %>',
+			data: [
+				<% innerIndex = 0
+				while innerIndex < @amountPerYearByResults[index].length - 1 %>
+					['<%= raw @uYears[innerIndex] %>', <%= raw @amountPerYearByResults[index][innerIndex] %>],
+					<% innerIndex = innerIndex + 1 %>
+				<% end %>
+				['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByResults[index][innerIndex] %>]
+			]
+	    },
+		<% index = index + 1 %>
+	<% end %>
+		{
+			name: '<%= raw @uResults[index] %>',
+			id: '<%= raw @uResults[index] %>',
+			data: [
+				<% innerIndex = 0
+				while innerIndex < @amountPerYearByResults[index].length - 1 %>
+					['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByResults[index][innerIndex] %>],
+					<% innerIndex = innerIndex + 1 %>
+				<% end %>
+				['<%= raw @uYears[innerIndex] %>', <%= @amountPerYearByResults[index][innerIndex] %>]
+			]
+	    }
+		]
+    }
+	
+});
+	drillDownChart = drillDownChart2;
+});
+
+</script>

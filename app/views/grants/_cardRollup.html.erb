@@ -1,0 +1,36 @@
+<div class="card green">
+	<p class="stat-number">$<%= number_to_human(@award_amount, precision:3) %><br/>
+		<span class="stat-title">Total Awarded</span><br/><br/>
+		<span class="stat-year">$529,243</span><br/> 
+		<span class="more-info">Year-To-Date</span>
+	</p>
+</div>
+<div class="card purple">
+	<p class="stat-number"><%= @grant_count %><br/>
+		<span class="stat-title">Total Projects</span><br/><br/>
+		<span class="stat-year">43</span><br/> 
+		<span class="more-info">Year-To-Date</span>
+	</p>
+</div>
+<div class="card orange">
+	<p class="stat-number"><%= number_with_delimiter(@served[0].first) %><br/>
+		<span class="stat-title">Native Hawaiins Served</span><br/><br/>
+		<span class="stat-year"><%=  number_with_delimiter(@served[0].second) %></span><br/> 
+		<span class="more-info">Total Served</span>
+	</p>
+</div>
+<div class="card red">
+	<p class="stat-number"><%= @grant_count - @inProgress %><br/>
+		<span class="stat-title">Grants Funded</span><br/><br/>
+		<span class="stat-year"><%= @inProgress %></span><br/> 
+		<span class="more-info">In-Progress</span>
+	</p>
+</div>
+<div class="card blue">
+	<p class="stat-number"><%= @uResults.count %><br/>
+		<span class="stat-title">Strategic Results</span><br/><br/>
+		<span class="stat-year"><%= @uPriorities.count %></span><br/> 
+		<span class="more-info">Strategic Priorities</span>
+	</p>
+</div>
+

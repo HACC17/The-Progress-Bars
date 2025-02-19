@@ -1,0 +1,775 @@
+/* line 6, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+table select {
+  color: #5e5e5e;
+  border: thin solid #777;
+  background-color: #fff;
+  border-radius: 0;
+  background: transparent;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px;
+  -webkit-appearance: none;
+  background-image: url(/assets/dropdown-bbb9ff80626af3b187a5e6bc85b143f905d3272fc50aa11b690ba18cf6e22239.png);
+  background-repeat: no-repeat;
+  background-position: 92% center;
+  width: 180px;
+  cursor: pointer;
+}
+
+/* line 23, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup {
+  width: 100%;
+  text-align: center;
+}
+/* line 26, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .card {
+  text-align: left;
+  height: 140px;
+  width: 220px;
+  margin: 0 10px 10px 0;
+  display: inline-grid;
+  padding: 0 0 0 10px;
+  color: #fff;
+  background-position: 90% 50%;
+}
+/* line 36, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .purple {
+  background-color: purple;
+  background-image: url(/assets/purpleCard-fe383d22548608b8e36c089e5bb73d60b5f6657a6f6d269267c6d5f7176d628b.jpg);
+}
+/* line 40, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .red {
+  background-color: red;
+  background-image: url(/assets/redCard-2cb49df05bacf015ab96d6495d27a009cabfe93f6f6ee00c21e2f56f6b944b90.jpg);
+}
+/* line 44, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .blue {
+  background-color: blue;
+  background-image: url(/assets/blueCard-f2aa9d598484a01f537174219e5bfc1d4fbfbdd6d052a5be81945adfb8a30b51.jpg);
+}
+/* line 48, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .orange {
+  background-color: orange;
+  background-image: url(/assets/orangeCard-409b36972759eff30f171dbd844211728352d25bbccce04796bf488f56f61619.jpg);
+}
+/* line 52, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .green {
+  background-color: green;
+  background-image: url(/assets/greenCard-566096045003a1ac740ecb1047f0c525c344a351951f5070e11175e4201393c4.jpg);
+}
+/* line 56, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup p {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+/* line 57, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup p.stat-number {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px 0 0 0;
+}
+/* line 62, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .stat-title {
+  font-size: 16px;
+  font-weight: normal;
+}
+/* line 66, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .stat-year {
+  font-size: 20px;
+  font-weight: normal;
+}
+/* line 70, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#dashboard-rollup .more-info {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* line 76, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#drill-down, #line-chart, #stacked-grouped-bar-chart, #stacked {
+  margin: 0 auto;
+}
+
+/* line 77, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#drill-down-chart, #stacked-chart, #line-stack-chart, #faq-area {
+  background: #fff;
+  border-radius: 2px;
+  display: inline;
+  float: left;
+  /*box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);*/
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16), 0 0px 0px 0 rgba(0, 0, 0, 0.12);
+  padding: 10px 0;
+  margin: 10px 1% 10px 0;
+}
+
+/* line 88, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+div#drill-down-chart {
+  width: 48.5%;
+  clear: left;
+}
+
+/* line 92, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+div#line-stack-chart {
+  width: 49.5%;
+}
+
+/* line 96, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+div#stacked-chart {
+  width: 100%;
+}
+
+/* line 100, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+#faq-area {
+  height: 800px;
+  overflow: scroll;
+  margin-top: 20px;
+  padding: 30px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* line 109, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+.select-filters {
+  text-align: center;
+}
+
+/* line 110, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+.chart-type-select {
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  opacity: .95;
+  margin-top: -10px;
+}
+
+/* line 111, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/grants.scss */
+.not-chosen {
+  opacity: .4;
+}
+#pdf{
+	margin: 0 auto;
+	font-family: arial;
+	font-size: 12px;
+	overflow-x: hidden;
+}
+#result {
+    text-align: right;
+    color: gray;
+    min-height: 2em;
+}
+#table-sparkline {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+th {
+    text-align: left;
+}
+td, th {
+    padding: 5px;
+}
+
+.highcharts-tooltip>span {
+    background: white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #888;
+    padding: 8px;
+}
+/* line 1, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 5, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 11, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 18, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 28, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 34, /Users/sidsavara/railspace/The-Progress-Bars/app/assets/stylesheets/scaffolds.scss */
+label {
+  display: block;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+/**
+ * material-design-lite - Material Design Components in CSS, JS and HTML
+ * @version v1.1.0
+ * @license Apache-2.0
+ * @copyright 2015 Google, Inc.
+ * @link https://github.com/google/material-design-lite
+ */
+
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  width:100%;
+  height: 100%;
+  font-family: 'Raleway ', sans-serif;
+  font-size: 14px;
+  color: #212121;
+  line-height: 1.4;
+  background-color: #f9f9f9;
+}
+
+#main-content{
+  margin:20px 20px 50px 20px;
+}
+
+/* navbar */
+.navbar {
+  padding: 10px 20px 5px 20px;
+  height: auto;
+  background-color: #fff;
+  -webkit-box-shadow:0 1px 3px 0 rgba(0,0,0,.16), 0 1px 5px 0 rgba(0,0,0,.12);
+  -moz-box-shadow:0 1px 3px 0 rgba(0,0,0,.16), 0 1px 5px 0 rgba(0,0,0,.12);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.16), 0 1px 8px 0 rgba(0,0,0,.12);
+}
+.logo,
+.nav {
+  display: inline-block;
+  margin: 0;
+  font-weight: normal;
+}
+/* nav links */
+.nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+    vertical-align:bottom;
+    line-height:50px;
+}
+.nav li {
+  display: inline-block;
+  padding:0 0 0 30px;
+}
+.navbar a {
+  color: #444;
+  text-decoration: none;
+}
+.navbar a:hover {
+  color: #777;
+}
+
+.nav-right{
+	float:right;
+}
+
+.expand-option{
+	cursor:pointer;
+}
+.mass-upload {
+    display:none;
+}
+
+.highcharts-credits{display:none;}
+
+
+
+/* Button Styles */
+.btn {
+  position: relative;
+  cursor:pointer;
+  border-width: 0;
+  outline: none;
+  overflow:hidden;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+  background-color: #03a9f4;
+  color: #f4f4f4;
+  transition: background-color .3s;
+  font-size: 12px;
+}
+
+.btn:hover, .export-area:hover {
+  opacity:.6;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 5px 24px;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  display: block;
+  width: 0;
+  padding-top: 0;
+  border-radius: 100%;
+  background-color: rgba(236, 240, 241, .2);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  transition: width .3s ease-out, padding-top .3s ease-out;
+}
+
+.export-area{
+	float: right;
+	cursor:pointer;
+    background-color: #03a9f4;
+    padding: 5px 24px;
+    margin: 5px 0 5px 0;
+    text-align:center;
+    font-size: 12px;
+  	border-radius: 2px;
+  	box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+.export-area a{
+	text-decoration:none;
+	color: #f9f9f9;
+}
+.export-area svg{
+	display: inline-block;
+	vertical-align: middle;
+}
+/* Data Table Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 350px;
+	left: 50%; 
+	bottom:100%;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    border-radius: 2px;
+    padding: 5px;
+  	-webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  	-moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.dataTables_filter, .dataTables_info { display: none; }
+.odd, .even {display:none;}
+.group-td{background-color:#f9f9f9;}
+
+#example_wrapper{padding-top:15px;}
+table.dataTable {
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    clear: both;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #fff;
+    padding-top: 16px;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.16), 0 0px 0px 0 rgba(0,0,0,.12);
+}
+table tfoot th {
+	border-bottom: 3px solid #eee;
+}
+tr.group td {
+	border-bottom: 2px solid #f2f2f2;
+	color: #777;
+	cursor:pointer;
+}
+
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable tfoot th,
+table.dataTable tfoot td{
+    padding: 0 18px;
+    color: #5e5e5e;
+}
+
+table.dataTable tfoot th,
+table.dataTable tfoot td{
+    padding-bottom:10px;
+}
+table.dataTable thead th:active,
+table.dataTable thead td:active {
+    outline: none
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+    cursor: pointer;
+    *cursor: hand;
+    background-repeat: no-repeat;
+    background-position: center right
+}
+
+table.dataTable tbody tr {
+    background-color: #fff;
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+    padding: 5px 18px;
+    height:30px;
+    color:#333;
+}
+table.dataTable.hover tbody tr:hover,
+table.dataTable.display tbody tr:hover {
+    background-color: #f9f9f9
+}
+
+
+table.dataTable.nowrap th,
+table.dataTable.nowrap td {
+    white-space: nowrap
+}
+
+table.dataTable.compact thead th,
+table.dataTable.compact thead td {
+    padding: 4px 17px 4px 4px
+}
+
+table.dataTable.compact tfoot th,
+table.dataTable.compact tfoot td {
+    padding: 4px
+}
+
+table.dataTable.compact tbody th,
+table.dataTable.compact tbody td {
+    padding: 4px
+}
+
+table.dataTable th.dt-left,
+table.dataTable td.dt-left,
+table.dataTable thead th.dt-head-left,
+table.dataTable thead td.dt-head-left,
+table.dataTable tfoot th.dt-head-left,
+table.dataTable tfoot td.dt-head-left,
+table.dataTable tbody th.dt-body-left,
+table.dataTable tbody td.dt-body-left {
+    text-align: left
+}
+
+table.dataTable th.dt-center,
+table.dataTable td.dt-center,
+table.dataTable td.dataTables_empty,
+table.dataTable thead th.dt-head-center,
+table.dataTable thead td.dt-head-center,
+table.dataTable tfoot th.dt-head-center,
+table.dataTable tfoot td.dt-head-center,
+table.dataTable tbody th.dt-body-center,
+table.dataTable tbody td.dt-body-center{
+    text-align: center
+}
+
+table.dataTable th.dt-right,
+table.dataTable td.dt-right,
+table.dataTable thead th.dt-head-right,
+table.dataTable thead td.dt-head-right,
+table.dataTable tfoot th.dt-head-right,
+table.dataTable tfoot td.dt-head-right,
+table.dataTable tbody th.dt-body-right,
+table.dataTable tbody td.dt-body-right {
+    text-align: right
+}
+
+table.dataTable th.dt-justify,
+table.dataTable td.dt-justify,
+table.dataTable thead th.dt-head-justify,
+table.dataTable thead td.dt-head-justify,
+table.dataTable tfoot th.dt-head-justify,
+table.dataTable tfoot td.dt-head-justify,
+table.dataTable tbody th.dt-body-justify,
+table.dataTable tbody td.dt-body-justify{
+    text-align: justify
+}
+
+table.dataTable th.dt-nowrap,
+table.dataTable td.dt-nowrap,
+table.dataTable thead th.dt-head-nowrap,
+table.dataTable thead td.dt-head-nowrap,
+table.dataTable tfoot th.dt-head-nowrap,
+table.dataTable tfoot td.dt-head-nowrap,
+table.dataTable tbody th.dt-body-nowrap,
+table.dataTable tbody td.dt-body-nowrap {
+    white-space: nowrap
+}
+
+tfoot {
+    display: table-header-group;
+}
+table.dataTable,
+table.dataTable th,
+table.dataTable td {
+    box-sizing: content-box
+}
+
+.dataTables_wrapper {
+    position: relative;
+    clear: both;
+    *zoom: 1;
+    zoom: 1
+}
+
+.dataTables_wrapper .dataTables_length {
+    float: left
+}
+
+.dataTables_wrapper .dataTables_filter {
+    float: right;
+    text-align: right
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0.5em
+}
+
+.dataTables_wrapper .dataTables_info {
+    clear: both;
+    float: left;
+    padding-top: 0.755em
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    float: right;
+    text-align: right;
+    padding-top: 0.25em
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 1.5em;
+    padding: 0.5em 1em;
+    margin-left: 2px;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    *cursor: hand;
+    color: #333 !important;
+    border-radius: 2px
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #333 !important;
+    background-color: white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    cursor: default;
+    color: #666 !important;
+    background: transparent;
+    box-shadow: none
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: white !important;
+    background-color: #585858;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    outline: none;
+    background-color: #2b2b2b;
+}
+
+.dataTables_wrapper .dataTables_paginate .ellipsis {
+    padding: 0 1em
+}
+
+.dataTables_wrapper .dataTables_processing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 40px;
+    margin-left: -50%;
+    margin-top: -25px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    background-color: white;
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(25%, rgba(255, 255, 255, 0.9)), color-stop(75%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0)));
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%)
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+    color: #333
+}
+
+.dataTables_wrapper .dataTables_scroll {
+    clear: both
+}
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+    *margin-top: -1px;
+    -webkit-overflow-scrolling: touch
+}
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td {
+    vertical-align: middle
+}
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th>div.dataTables_sizing,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td>div.dataTables_sizing,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th>div.dataTables_sizing,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td>div.dataTables_sizing {
+    height: 0;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important
+}
+
+
+.dataTables_wrapper:after {
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0
+}
+.ten{width: 10%;}
+.twenty-five{width: 20%;}
+.thirty{width: 30%;}
+.fifty{width: 50%;padding-left:30px !important;}
+.details-control{display:none;}
+.icon {
+	position: relative;
+	width:16px;
+	height:16px;
+}
+
+.icon-plus, .icon-minus {
+	background-color: #000;
+	border-radius:8px;
+	width: 16px;
+	height: 16px;
+	position: relative;
+	top:0;
+	left:0;
+}
+.icon-plus:before {
+	background-color: #fff;
+	width: 2px;
+	height: 8px;
+	border-radius: 1px;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	position: absolute;
+	top:4px;
+	left: 7px;
+	  content:"";
+}
+.icon-minus:after, .icon-plus:after  {
+	background-color: #fff;
+	width: 8px;
+	height: 2px;
+	border-radius: 1px;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	position: absolute;
+	top:7px;
+	left: 3.5px;
+	  z-index:4;
+	   content:"";
+}
+
+@media screen and (max-width: 1260px) {
+	.card{width: 180px !important;}
+}
+@media screen and (max-width: 1060px) {
+	.card{margin: 0 5px 5px 0 !important;width: 175px !important;}
+	#dashboard-rollup p.stat-number{font-size: 22px;}
+	.stat-year {font-size:18px !important;}
+	.more-info {font-size:14px !important;}
+}
+@media screen and (max-width: 1000px) {
+	#drill-down-chart, #stacked-chart, #line-stack-chart{width:100% !important;}
+	tfoot tr, .responsive-hide{display:none;}
+	.fifty{width: 75% !important;}
+	table.dataTable{padding-top:15px;}
+	table.dataTable thead th{padding-bottom: 10px;border-bottom: 3px solid #eee;}
+	.btn span{padding:5px 22px;}
+	.card{margin: 0 2px 2px 0 !important;}
+	#dashboard-rollup .blue{display:none;}
+}
+@media screen and (max-width: 800px) {
+	.nav{display:none;}
+	.navbar{text-align:center;}
+	.btn span{padding:5px 0px !important;}
+	#main-content{margin:10px 5px 40px 5px;}
+	.card{width: 180px !important;}
+	.twenty-five, .thirty{display:none;}
+}
+@media screen and (max-width: 500px) {
+}

@@ -1,4 +1,6 @@
-<%= form_tag import_grants_path, multipart: true do %>
-	<%= file_field_tag :file %>
-	<%= submit_tag "Upload" %>
-<% end %>
+<div class="mass-upload">
+	<%= form_tag import_grants_path, multipart: true do %>
+		<%= file_field_tag :file %>
+		<%= submit_tag "Upload" %>
+	<% end %>
+</div>

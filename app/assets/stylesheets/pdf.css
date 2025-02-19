@@ -1,36 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 #pdf{
 	margin: 0 auto;
-	font-family: arial;
-	font-size: 12px;
+	font-family: 'Raleway', serif;
+	font-size: 14px;
 	overflow-x: hidden;
+	overflow-y:hidden;
+	color: #333;
 }
-#result {
-    text-align: right;
-    color: gray;
-    min-height: 2em;
-}
-#table-sparkline {
-    margin: 0 auto;
-    border-collapse: collapse;
-}
-th {
-    font-weight: bold;
-    text-align: left;
-}
-td, th {
-    padding: 5px;
-    border-bottom: 1px solid silver;
-    height: 20px;
-}
+#pdf h2{text-align:center; margin:0 0 10px 0; padding:10px 0; font-weight:normal; background-color:#f9f9f9;}
 
-thead th {
-    border-top: 2px solid gray;
-    border-bottom: 2px solid gray;
-}
-.highcharts-tooltip>span {
-    background: white;
-    border: 1px solid silver;
-    border-radius: 3px;
-    box-shadow: 1px 1px 2px #888;
-    padding: 8px;
-}
+#row{text-align:center;}
+.rollup-card{width: 200px; display:inline-block; text-align:left;padding:10px}
+.rt-border{border-right: 1px dotted #5e5e5e;}
+.bt-border{border-bottom: 1px dotted #5e5e5e; }
+.rollup-card p{font-weight:bold; font-size:18px; margin:0; color: #0d4f02}
+.rollup-card span{font-weight:normal; font-size:14px; color: #333; }
+.padding{padding-bottom:15px;}
+
+#top-chart{border-bottom: 1px dotted #5e5e5e;padding-top:15px; padding-bottom:10px; border-top: 1px dotted #5e5e5e;}
+#bottom-chart{padding-top:10px;}
+
+#bottom-chart, #top-chart{margin: 0 auto; width: 100%;}
+#container1{height: 350px; width: 690px;}
+#container2{height: 400px; width: 690px;}
